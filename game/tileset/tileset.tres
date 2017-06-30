@@ -1,11 +1,23 @@
-[gd_resource type="TileSet" load_steps=3 format=1]
+[gd_resource type="TileSet" load_steps=7 format=1]
 
 [ext_resource path="res://asset/tile_1.png" type="Texture" id=1]
+[ext_resource path="res://asset/tile_2.png" type="Texture" id=2]
+[ext_resource path="res://asset/tile_3.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16.116, 5.84829 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
 
 [resource]
 
@@ -18,4 +30,22 @@ extents = Vector2( 16.116, 5.84829 )
 0/navigation_offset = Vector2( 16, 16 )
 0/shape_offset = Vector2( 16, 16 )
 0/shapes = [ SubResource( 1 ) ]
+1/name = "tile_1"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 32, 32 )
+1/occluder_offset = Vector2( 16, 16 )
+1/navigation_offset = Vector2( 16, 16 )
+1/shape_offset = Vector2( 16, 16 )
+1/shapes = [ SubResource( 2 ) ]
+2/name = "tile_2"
+2/texture = ExtResource( 3 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 32, 32 )
+2/occluder_offset = Vector2( 16, 16 )
+2/navigation_offset = Vector2( 16, 16 )
+2/shape_offset = Vector2( 16, 16 )
+2/shapes = [ SubResource( 3 ) ]
 
