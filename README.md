@@ -1,2 +1,5 @@
-# godot-example-2d-platform
-Starting point for godot multi-world 2d platformen
+# Godot boilerplate code for 2D platformer
+
+Our starting point for making a 2D multi-world platformer.
+
+
