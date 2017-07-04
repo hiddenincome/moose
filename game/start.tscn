@@ -2,7 +2,6 @@
 
 [ext_resource path="res://game/start.gd" type="Script" id=1]
 
-
 [sub_resource type="DynamicFontData" id=1]
 
 font_path = "res://asset/font/C64_Pro-STYLE.ttf"
