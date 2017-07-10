@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://game/world/world-1.gd" type="Script" id=1]
-[ext_resource path="res://asset/Forest_level.png" type="Texture" id=2]
-[ext_resource path="res://game/tileset/tileset.tres" type="TileSet" id=3]
-[ext_resource path="res://game/item/exit_next_world.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/tileset/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://game/item/exit_next_world.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFontData" id=1]
 
@@ -19,12 +18,6 @@ font/font = SubResource( 1 )
 [node name="world_1" type="Node"]
 
 script/script = ExtResource( 1 )
-
-[node name="background" type="Sprite" parent="."]
-
-transform/pos = Vector2( 639.039, 515.842 )
-transform/scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
 
 [node name="world_name_label" type="Label" parent="."]
 
@@ -45,7 +38,7 @@ max_lines_visible = -1
 [node name="tile_map" type="TileMap" parent="."]
 
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 2 )
 cell/size = Vector2( 32, 32 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -64,7 +57,7 @@ tile_data = IntArray( -131061, 1, -131060, 1, -131059, 1, -131058, 1, -65536, 1,
 
 transform/pos = Vector2( 535.075, 529.021 )
 
-[node name="exit_next_world" parent="." instance=ExtResource( 4 )]
+[node name="exit_next_world" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 986.484, 530.071 )
 
