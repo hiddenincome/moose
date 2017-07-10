@@ -40,7 +40,7 @@ func _input(event):
 		walljump_left = true
 		velocity.y = JUMP_SPEED
 		velocity.x = JUMP_SPEED
-	if event.is_action_pressed("player_up") and left_wall_ray.is_colliding() and walljump_left:
+	if event.is_action_pressed("player_up") and left_wall_ray.is_colliding() and walljump_left and not ground_ray.is_colliding():
 		walljump_left = false
 		walljump_right = true
 		velocity.y = JUMP_SPEED
@@ -92,7 +92,11 @@ func _process(delta):
 		walljump_left = true
 		walljump_right = true
 	
-	
+	if right_wall_ray.is_colliding() or left_wall_ray.is_colliding(): 
+		GRAVITY = 1600
+	else:
+		GRAVITY = 2600
+
 	
 			
 	# print("C ", ground_ray.is_colliding(), " ", right_wall_ray.is_colliding())
