@@ -1,12 +1,13 @@
 extends KinematicBody2D
 
+
 onready var right_wall_ray = get_node("right_wall_ray")
 onready var ground_ray = get_node("ground_ray")
 onready var sprite = get_node("sprite")
 onready var left_wall_ray = get_node("left_wall_ray")
 
 
-const ACCELERATION = 3000
+const ACCELERATION = 4000
 const MAX_VELOCITY = 500
 const FRICTION = -1000
 const GRAVITY = 2600

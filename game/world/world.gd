@@ -1,19 +1,25 @@
 extends Node
 
-var player = null
+var player_1 = null
+var player_2 = null
 
 func _ready():
 	# Retrieve the player object from the controller
-	player = controller.get_player()
+	player_1 = controller.get_player(1)
+	player_2 = controller.get_player(2)
 	
 	# Add the player to this world and make it spawn at the 
 	# right place
-	add_child(player)
-	player.set_pos(get_node("player_spawn").get_pos())
+	add_child(player_1)
+	player_1.set_pos(get_node("player_spawn").get_pos())
+
+	add_child(player_2)
+	player_2.set_pos(get_node("player2_spawn").get_pos())
 	
 func goto_next_world():
 	# Remove player from scene tree to prevent it from 
 	# being deleted when we change scene
-	remove_child(player)
+	remove_child(player_1)
+	remove_child(player_2)
 	
 	controller.load_world(self.next_world_index)
