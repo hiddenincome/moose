@@ -37,6 +37,7 @@ max_lines_visible = -1
 
 [node name="tile_map" type="TileMap" parent="."]
 
+transform/pos = Vector2( -124, 33 )
 mode = 0
 tile_set = ExtResource( 2 )
 cell/size = Vector2( 32, 32 )
@@ -60,5 +61,9 @@ transform/pos = Vector2( 549.793, 303.812 )
 [node name="exit_next_world" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 996.972, 305.938 )
+
+[node name="player2_spawn" type="Position2D" parent="."]
+
+transform/pos = Vector2( 445.223, 311.656 )
 
 

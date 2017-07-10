@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
 
-onready var right_wall_ray = get_node("right_wall_ray")
-onready var ground_ray = get_node("ground_ray")
-onready var sprite = get_node("sprite")
-onready var left_wall_ray = get_node("left_wall_ray")
-onready var player_2 = get_node("player_2")
+onready var left_wall_ray2 = get_node("left_wall_ray2")
+onready var ground_ray2 = get_node("ground_ray2")
+onready var sprite_2 = get_node("sprite_2")
+onready var right_wall_ray2 = get_node("right_wall_ray2")
+onready var player_1 = get_node("player")
 
 const ACCELERATION = 4000
 const MAX_VELOCITY = 500
@@ -17,32 +17,32 @@ const MAX_ACCELERATION_AIR = 300
 
 var acceleration = Vector2()
 var velocity = Vector2()
-var walljump_left = true 
-var walljump_right = true
+var walljumpi_left = true 
+var walljumpi_right = true
 
 func _ready():
 	set_process(true)
 	set_process_input(true)
 	
-	add_collision_exception_with(player_2)
-	left_wall_ray.add_exception(self)
-	right_wall_ray.add_exception(self)
-	ground_ray.add_exception(self)
+	add_collision_exception_with(player_1)
+	right_wall_ray2.add_exception(self)
+	left_wall_ray2.add_exception(self)
+	ground_ray2.add_exception(self)
 	
 func _input(event):
-	if event.is_action_pressed("player_up") and ground_ray.is_colliding():
+	if event.is_action_pressed("player2_up") and ground_ray2.is_colliding():
 		velocity.y = JUMP_SPEED
-	if event.is_action_released("player_up"):
+	if event.is_action_released("player2_up"):
 		if velocity.y < MIN_JUMP:
 			velocity.y = MIN_JUMP
-	if event.is_action_pressed("player_up") and right_wall_ray.is_colliding() and walljump_right and not ground_ray.is_colliding():
-		walljump_right = false
-		walljump_left = true
+	if event.is_action_pressed("player2_up") and right_wall_ray2.is_colliding() and walljumpi_right:
+		walljumpi_right = false
+		walljumpi_left = true
 		velocity.y = JUMP_SPEED
 		velocity.x = JUMP_SPEED
-	if event.is_action_pressed("player_up") and left_wall_ray.is_colliding() and walljump_left:
-		walljump_left = false
-		walljump_right = true
+	if event.is_action_pressed("player2_up") and left_wall_ray2.is_colliding() and walljumpi_left:
+		walljumpi_left = false
+		walljumpi_right = true
 		velocity.y = JUMP_SPEED
 		velocity.x = -JUMP_SPEED
 
@@ -52,12 +52,12 @@ func _process(delta):
 	acceleration.y = GRAVITY
 	
 	# Accelerate left or right dependin.g on user input.
-	acceleration.x = ACCELERATION * (Input.is_action_pressed("player_right") - 
-		Input.is_action_pressed("player_left"))
+	acceleration.x = ACCELERATION * (Input.is_action_pressed("player2_right") - 
+		Input.is_action_pressed("player2_left"))
 	if velocity.x > 0: 
-		sprite.set_flip_h(true)
+		sprite_2.set_flip_h(false)
 	if velocity.x < 0:
-		sprite.set_flip_h(false)
+		sprite_2.set_flip_h(true)
 	
 	# Don't break immediately when the player releases the right/left key, 
 	# use friction to stop.
@@ -88,15 +88,10 @@ func _process(delta):
 	if is_colliding() and get_collider().get_name() == "exit_next_world":
 		controller.get_world().goto_next_world()
 	
-	if ground_ray.is_colliding():
-		walljump_left = true
-		walljump_right = true
+	if ground_ray2.is_colliding():
+		walljumpi_left = true
+		walljumpi_right = true
 	
+	 print("C ", ground_ray2.is_colliding(), " ", right_wall_ray2.is_colliding())
+
 	
-	
-			
-	# print("C ", ground_ray.is_colliding(), " ", right_wall_ray.is_colliding())
-
-
-
-
