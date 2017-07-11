@@ -7,7 +7,7 @@
 
 custom_solver_bias = 0.0
 radius = 14.856
-height = 26.526
+height = 21.7418
 
 [node name="player_2" type="KinematicBody2D"]
 

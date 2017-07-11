@@ -9,7 +9,7 @@ onready var player_1 = get_node("player")
 
 const ACCELERATION = 4000
 const MAX_VELOCITY = 500
-const FRICTION = -1000
+const FRICTION = -4500
 const GRAVITY = 2600
 const JUMP_SPEED = -800
 const MIN_JUMP = -500
@@ -92,6 +92,6 @@ func _process(delta):
 		walljumpi_left = true
 		walljumpi_right = true
 	
-	 print("C ", ground_ray2.is_colliding(), " ", right_wall_ray2.is_colliding())
+	 #print("C ", ground_ray2.is_colliding(), " ", right_wall_ray2.is_colliding())
 
 	

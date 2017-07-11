@@ -6,10 +6,14 @@ onready var ground_ray = get_node("ground_ray")
 onready var sprite = get_node("sprite")
 onready var left_wall_ray = get_node("left_wall_ray")
 onready var player_2 = get_node("player_2")
+onready var slash_cooldown = get_node("slash_cooldown")
+
+export (PackedScene) var slash
+
 
 const ACCELERATION = 4000
 const MAX_VELOCITY = 500
-const FRICTION = -1000
+const FRICTION = -2000
 const GRAVITY = 2600
 const JUMP_SPEED = -800
 const MIN_JUMP = -500
@@ -19,6 +23,8 @@ var acceleration = Vector2()
 var velocity = Vector2()
 var walljump_left = true 
 var walljump_right = true
+var look_left = true
+
 
 func _ready():
 	set_process(true)
@@ -56,9 +62,19 @@ func _process(delta):
 		Input.is_action_pressed("player_left"))
 	if velocity.x > 0: 
 		sprite.set_flip_h(true)
+		look_left = false
 	if velocity.x < 0:
 		sprite.set_flip_h(false)
-	
+		look_left = true
+	if Input.is_action_pressed("slash") and slash_cooldown.get_time_left() == 0:
+		slash_cooldown.start()
+		var s = slash.instance()
+		self.add_child(s)
+		s.flip(look_left)
+		if look_left:
+			s.set_pos(Vector2(-25, 0))
+		else:
+			s.set_pos(Vector2(25, 0))
 	# Don't break immediately when the player releases the right/left key, 
 	# use friction to stop.
 	if acceleration.x == 0:
@@ -96,11 +112,11 @@ func _process(delta):
 		GRAVITY = 1600
 	else:
 		GRAVITY = 2600
-
-	
-			
-	# print("C ", ground_ray.is_colliding(), " ", right_wall_ray.is_colliding())
-
-
-
+		
+	if not ground_ray.is_colliding():
+		FRICTION = -146
+		ACCELERATION = 4896
+	else:
+		FRICTION = -2000
+		ACCELERATION = 4000
 
