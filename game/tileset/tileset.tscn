@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=1]
 
-[ext_resource path="res://asset/tile_1.png" type="Texture" id=1]
+[ext_resource path="res://asset/sword_slash_1.png" type="Texture" id=1]
 [ext_resource path="res://asset/platform_0.png" type="Texture" id=2]
 [ext_resource path="res://asset/riktigvagg_0.png" type="Texture" id=3]
 [ext_resource path="res://asset/riktigvagg_1.png" type="Texture" id=4]

@@ -25,28 +25,39 @@ var walljump_left = true
 var walljump_right = true
 var look_left = true
 
+var action_name_left = ""
+var action_name_right = ""
+var action_name_slash = ""
+var action_name_up = ""
 
 func _ready():
 	set_process(true)
 	set_process_input(true)
 	
-	add_collision_exception_with(player_2)
+	#add_collision_exception_with(player_2)
 	left_wall_ray.add_exception(self)
 	right_wall_ray.add_exception(self)
 	ground_ray.add_exception(self)
 	
+	var name = get_name()
+	
+	action_name_left = name + "_left"
+	action_name_right = name + "_right"
+	action_name_slash = name + "_slash"
+	action_name_up = name + "_up"
+	
 func _input(event):
-	if event.is_action_pressed("player_up") and ground_ray.is_colliding():
+	if event.is_action_pressed(action_name_up) and ground_ray.is_colliding():
 		velocity.y = JUMP_SPEED
-	if event.is_action_released("player_up"):
+	if event.is_action_released(action_name_up):
 		if velocity.y < MIN_JUMP:
 			velocity.y = MIN_JUMP
-	if event.is_action_pressed("player_up") and right_wall_ray.is_colliding() and walljump_right and not ground_ray.is_colliding():
+	if event.is_action_pressed(action_name_up) and right_wall_ray.is_colliding() and walljump_right and not ground_ray.is_colliding():
 		walljump_right = false
 		walljump_left = true
 		velocity.y = JUMP_SPEED
 		velocity.x = JUMP_SPEED
-	if event.is_action_pressed("player_up") and left_wall_ray.is_colliding() and walljump_left and not ground_ray.is_colliding():
+	if event.is_action_pressed(action_name_up) and left_wall_ray.is_colliding() and walljump_left and not ground_ray.is_colliding():
 		walljump_left = false
 		walljump_right = true
 		velocity.y = JUMP_SPEED
@@ -58,15 +69,15 @@ func _process(delta):
 	acceleration.y = GRAVITY
 	
 	# Accelerate left or right dependin.g on user input.
-	acceleration.x = ACCELERATION * (Input.is_action_pressed("player_right") - 
-		Input.is_action_pressed("player_left"))
+	acceleration.x = ACCELERATION * (Input.is_action_pressed(action_name_right) - 
+		Input.is_action_pressed(action_name_left))
 	if velocity.x > 0: 
 		sprite.set_flip_h(true)
 		look_left = false
 	if velocity.x < 0:
 		sprite.set_flip_h(false)
 		look_left = true
-	if Input.is_action_pressed("slash") and slash_cooldown.get_time_left() == 0:
+	if Input.is_action_pressed(action_name_slash) and slash_cooldown.get_time_left() == 0:
 		slash_cooldown.start()
 		var s = slash.instance()
 		self.add_child(s)
