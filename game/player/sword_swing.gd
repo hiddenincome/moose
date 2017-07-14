@@ -20,4 +20,5 @@ func _on_animatedsprite_finished():
 
 func _on_sword_swing_body_enter( body ):
 	if body.get_name() != my_master:
-		controller.player_hit(body.get_name())
+		controller.player_hit(my_master, body.get_name())
+		

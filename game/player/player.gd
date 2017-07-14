@@ -24,6 +24,7 @@ var velocity = Vector2()
 var walljump_left = true 
 var walljump_right = true
 var look_left = true
+var score = 0
 
 var action_name_left = ""
 var action_name_right = ""
@@ -139,4 +140,11 @@ func _process(delta):
 
 func you_got_hit():
 	#print("NO - I GOT HIT ", get_name())
-	queue_free()
+	pass
+	
+	
+func you_hit():
+	score += 1
+	
+func get_score():
+	return score

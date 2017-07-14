@@ -32,9 +32,14 @@ func load_world(index):
 func new_game():
 	load_world(1)
 
-func player_hit(player_name):
-	print("HIT ", player_name)
-	if player_name == "player_1":
+func player_hit(attacker, victim):
+	print(attacker, "HIT ", victim)
+	if victim == "player_1":
 		player.you_got_hit()
-	elif player_name == "player_2":
+	elif victim == "player_2":
 		player2.you_got_hit()
+	if attacker == "player_1":
+		player.you_hit()
+	elif attacker == "player_2":
+		player2.you_hit()
+	get_world().update_score()
