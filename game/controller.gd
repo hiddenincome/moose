@@ -38,3 +38,10 @@ func player_hit(player_name):
 		player.you_got_hit()
 	elif player_name == "player_2":
 		player2.you_got_hit()
+		
+func player_power_up(player_name):
+	print("POWER-UP",player_name)
+	if player_name == "player_1":
+		player.you_powered_up()
+	elif player_name == "player_2":
+		player2.you_powered_up()

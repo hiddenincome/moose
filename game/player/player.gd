@@ -140,3 +140,7 @@ func _process(delta):
 func you_got_hit():
 	#print("NO - I GOT HIT ", get_name())
 	queue_free()
+	
+func you_powered_up():
+	print("power-up") 
+	

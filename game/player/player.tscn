@@ -54,7 +54,7 @@ slash = ExtResource( 2 )
 
 frames = SubResource( 2 )
 animation = "idle"
-frame = 3
+frame = 2
 playing = true
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
