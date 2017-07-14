@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://game/player/player.gd" type="Script" id=1]
 [ext_resource path="res://game/player/sword_swing.tscn" type="PackedScene" id=2]
@@ -7,8 +7,11 @@
 [ext_resource path="res://asset/character_1_idle_animation_2.png" type="Texture" id=5]
 [ext_resource path="res://asset/character_1_idle_animation_3.png" type="Texture" id=6]
 [ext_resource path="res://asset/character_1_idle_animation_4.png" type="Texture" id=7]
-[ext_resource path="res://asset/character_1_placeholder_attack_5.png" type="Texture" id=8]
-[ext_resource path="res://asset/character_1_placeholder_attack_6.png" type="Texture" id=9]
+[ext_resource path="res://asset/character_1_idle_attack_0.png" type="Texture" id=8]
+[ext_resource path="res://asset/character_1_idle_attack_1.png" type="Texture" id=9]
+[ext_resource path="res://asset/character_1_idle_attack_2.png" type="Texture" id=10]
+[ext_resource path="res://asset/character_1_idle_attack_3.png" type="Texture" id=11]
+[ext_resource path="res://asset/character_1_idle_attack_4.png" type="Texture" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -24,9 +27,14 @@ animations = [ {
 "name": "idle",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": false,
 "name": "attack",
+"speed": 17.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "HRDHAHAFD",
 "speed": 5.0
 } ]
 

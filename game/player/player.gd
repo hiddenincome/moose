@@ -79,13 +79,17 @@ func _process(delta):
 		look_left = true
 	if Input.is_action_pressed(action_name_slash) and slash_cooldown.get_time_left() == 0:
 		slash_cooldown.start()
+		sprite.play("attack")
 		var s = slash.instance()
+		s.set_master(get_name())
 		self.add_child(s)
 		s.flip(look_left)
 		if look_left:
 			s.set_pos(Vector2(-25, 0))
 		else:
 			s.set_pos(Vector2(25, 0))
+		
+	
 	# Don't break immediately when the player releases the right/left key, 
 	# use friction to stop.
 	if acceleration.x == 0:
@@ -131,3 +135,8 @@ func _process(delta):
 		FRICTION = -2000
 		ACCELERATION = 4000
 
+	#add_to_group(players)
+
+func you_got_hit():
+	#print("NO - I GOT HIT ", get_name())
+	queue_free()

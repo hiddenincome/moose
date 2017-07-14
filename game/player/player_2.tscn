@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://game/player/player.gd" type="Script" id=1]
 [ext_resource path="res://game/player/sword_swing.tscn" type="PackedScene" id=2]
@@ -9,6 +9,20 @@
 custom_solver_bias = 0.0
 radius = 14.856
 height = 21.7418
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+} ]
 
 [node name="player_2" type="KinematicBody2D"]
 
@@ -22,9 +36,10 @@ collision/margin = 0.08
 script/script = ExtResource( 1 )
 slash = ExtResource( 2 )
 
-[node name="sprite" type="Sprite" parent="."]
+[node name="sprite" type="AnimatedSprite" parent="."]
 
-texture = ExtResource( 3 )
+frames = SubResource( 2 )
+animation = "idle"
 
 [node name="collision" type="CollisionShape2D" parent="."]
 
