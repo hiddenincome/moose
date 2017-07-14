@@ -142,9 +142,12 @@ func you_got_hit():
 	#print("NO - I GOT HIT ", get_name())
 	pass
 	
-	
 func you_hit():
 	score += 1
 	
 func get_score():
 	return score
+	
+func you_powered_up():
+	print("power-up") 
+	

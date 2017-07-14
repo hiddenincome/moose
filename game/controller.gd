@@ -43,3 +43,10 @@ func player_hit(attacker, victim):
 	elif attacker == "player_2":
 		player2.you_hit()
 	get_world().update_score()
+		
+func player_power_up(player_name):
+	print("POWER-UP",player_name)
+	if player_name == "player_1":
+		player.you_powered_up()
+	elif player_name == "player_2":
+		player2.you_powered_up()
