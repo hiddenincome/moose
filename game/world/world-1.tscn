@@ -72,4 +72,27 @@ transform/pos = Vector2( 986.484, 530.071 )
 
 transform/pos = Vector2( 284.53, 326.373 )
 
+[node name="p_spawn" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = false
+autostart = true
+
+[node name="powerup_spawn" type="Node" parent="."]
+
+[node name="p_s_1" type="Position2D" parent="powerup_spawn"]
+
+transform/pos = Vector2( 145.589, 524.94 )
+
+[node name="p_s_3" type="Position2D" parent="powerup_spawn"]
+
+transform/pos = Vector2( 434.444, 241.872 )
+
+[node name="p_s_2" type="Position2D" parent="powerup_spawn"]
+
+transform/pos = Vector2( 900.322, 526.416 )
+
+[connection signal="timeout" from="p_spawn" to="." method="_on_p_spawn_timeout"]
+
 
