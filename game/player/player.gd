@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-
 onready var right_wall_ray = get_node("right_wall_ray")
 onready var ground_ray = get_node("ground_ray")
 onready var sprite = get_node("sprite")
@@ -25,6 +24,7 @@ var walljump_left = true
 var walljump_right = true
 var look_left = true
 var score = 0
+var health = 100
 
 var action_name_left = ""
 var action_name_right = ""
@@ -139,15 +139,21 @@ func _process(delta):
 	#add_to_group(players)
 
 func you_got_hit():
-	#print("NO - I GOT HIT ", get_name())
-	pass
+	health -= 25
 	
 func you_hit():
 	score += 1
 	
+func get_health():
+	return health
+
 func get_score():
 	return score
 	
 func you_powered_up():
 	print("power-up") 
+	
+func respawn():
+	health = 100
+	score = 0
 	
