@@ -1,5 +1,7 @@
 extends Node
 
+onready var player_spawn_container = get_node("player_spawn_container")
+
 var player_1 = null
 var player_2 = null
 
@@ -10,21 +12,23 @@ func _ready():
 	
 	# Add the player to this world and make it spawn at the 
 	# right place
-	add_child(player_1)
-	player_1.set_pos(get_node("player_spawn").get_pos())
+	respawn_player(1)
+	respawn_player(2)
 
-	add_child(player_2)
-	player_2.set_pos(get_node("player2_spawn").get_pos())
-	
 func respawn_player(index):
+	var player
 	if index == 1:
-		player_1.respawn()
-		add_child(player_1)
-		player_1.set_pos(get_node("player_spawn").get_pos())
+		player = player_1
 	elif index == 2:
-		player_2.respawn()
-		add_child(player_2)
-		player_2.set_pos(get_node("player2_spawn").get_pos())
+		player = player_2
+	else:
+		return
+	
+	player.respawn()
+	add_child(player)
+	var player_spawns = player_spawn_container.get_children()
+	var player_spawn = player_spawns[randi() % player_spawns.size()];
+	player.set_pos(player_spawn.get_pos())
 		
 func remove_player(index):
 	if index == 1:

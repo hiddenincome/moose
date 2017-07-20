@@ -6,6 +6,7 @@ onready var p_spawn = get_node("powerup_spawn")
 onready var powerup = preload("res://game/item/powerup.tscn")
 onready var active_powerup_container = get_node("powerup_container")
 
+
 var next_world_index = 2
 
 func _ready():
