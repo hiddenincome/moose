@@ -102,6 +102,10 @@ autostart = true
 
 transform/pos = Vector2( 145.589, 524.94 )
 
+[node name="p_s_4" type="Position2D" parent="powerup_spawn"]
+
+transform/pos = Vector2( 145.589, 524.94 )
+
 [node name="p_s_3" type="Position2D" parent="powerup_spawn"]
 
 transform/pos = Vector2( 434.444, 241.872 )

@@ -31,6 +31,11 @@ var action_name_right = ""
 var action_name_slash = ""
 var action_name_up = ""
 
+var sword_strength = 10
+var power_up_sword_strength = 0
+
+var power_up_reset_timer = null
+
 func _ready():
 	set_process(true)
 	set_process_input(true)
@@ -46,6 +51,12 @@ func _ready():
 	action_name_right = name + "_right"
 	action_name_slash = name + "_slash"
 	action_name_up = name + "_up"
+	
+	power_up_reset_timer = Timer.new()
+	power_up_reset_timer.set_one_shot(true)
+	power_up_reset_timer.set_wait_time(5.0)
+	power_up_reset_timer.connect("timeout", self, "reset_power_ups")
+	add_child(power_up_reset_timer)
 	
 func _input(event):
 	if event.is_action_pressed(action_name_up) and ground_ray.is_colliding():
@@ -82,7 +93,8 @@ func _process(delta):
 		slash_cooldown.start()
 		sprite.play("attack")
 		var s = slash.instance()
-		s.set_master(get_name())
+		s.set_master(self)
+		s.set_power(sword_strength + power_up_sword_strength)
 		self.add_child(s)
 		s.flip(look_left)
 		if look_left:
@@ -138,8 +150,8 @@ func _process(delta):
 
 	#add_to_group(players)
 
-func you_got_hit():
-	health -= 25
+func you_got_hit(power):
+	health -= power
 	
 func you_hit():
 	score += 1
@@ -150,10 +162,22 @@ func get_health():
 func get_score():
 	return score
 	
-func you_powered_up():
-	print("power-up") 
-	
 func respawn():
 	health = 100
 	score = 0
+	
+func power_up(type_of, value, timeout_s):
+	if type_of == "sword_strength":
+		power_up_sword_strength = value
+		power_up_reset_timer.set_wait_time(5.0)
+		power_up_reset_timer.start()
+		
+func reset_power_ups():
+	power_up_sword_strength = 0
+	controller.update()
+	
+func get_power_up_string():
+	if power_up_sword_strength > 0:
+		return "S"
+	return ""
 	

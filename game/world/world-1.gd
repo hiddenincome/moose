@@ -30,6 +30,6 @@ func _on_p_spawn_timeout():
 		fire.set_pos(spawn_point.get_pos())
 		
 func update_score():
-	player_1_score.set_text("%d %d%%" % [player_1.get_score(), player_1.get_health()])
-	player_2_score.set_text("%d %d%%" % [player_2.get_score(), player_2.get_health()])
+	player_1_score.set_text("%d %d%% %s" % [player_1.get_score(), player_1.get_health(), player_1.get_power_up_string()])
+	player_2_score.set_text("%d %d%% %s" % [player_2.get_score(), player_2.get_health(), player_2.get_power_up_string()])
 		

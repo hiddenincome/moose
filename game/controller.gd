@@ -57,32 +57,17 @@ func load_world(index):
 
 func new_game():
 	load_world(1)
+	call_deferred("update")
 
-func player_hit(attacker, victim):
-	print(attacker, "HIT ", victim)
-	if victim == "player_1":
-		player.you_got_hit()
-	elif victim == "player_2":
-		player2.you_got_hit()
-	if attacker == "player_1":
-		player.you_hit()
-	elif attacker == "player_2":
-		player2.you_hit()
+func update():
 	get_world().update_score()
-	
+
 	if player.get_health() == 0:
 		get_world().remove_player(1)
 		player_1_respawn_timer.start()
 	if player2.get_health() == 0:
 		get_world().remove_player(2)
 		player_2_respawn_timer.start()
-		
-func player_power_up(player_name):
-	print("POWER-UP",player_name)
-	if player_name == "player_1":
-		player.you_powered_up()
-	elif player_name == "player_2":
-		player2.you_powered_up()
 
 func respawn_player(player_name):
 	print("Respawn player ", player_name)
