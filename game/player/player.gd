@@ -181,3 +181,7 @@ func get_power_up_string():
 		return "S"
 	return ""
 	
+
+func _on_sprite_finished():
+	sprite.play("idle")
+	pass # replace with function body
